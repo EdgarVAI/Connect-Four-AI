@@ -1,0 +1,109 @@
+:root {
+  --board: #1e3a8a;
+  --hole: #0f172a;
+  --human: #ef4444;
+  --ai: #facc15;
+  --ink: #e2e8f0;
+  --muted: #94a3b8;
+  --panel: #1e293b;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #0f172a;
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  display: flex;
+  justify-content: center;
+  padding: 24px 16px 48px;
+}
+
+.app { width: 100%; max-width: 560px; }
+
+h1 { margin: 0 0 4px; font-size: 1.9rem; letter-spacing: -0.02em; }
+.subtitle { margin: 0 0 20px; color: var(--muted); font-size: 0.9rem; }
+
+.chip {
+  display: inline-block;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  vertical-align: -1px;
+}
+.chip.human { background: var(--human); }
+.chip.ai { background: var(--ai); }
+
+.controls {
+  display: flex; gap: 8px; align-items: center;
+  flex-wrap: wrap; margin-bottom: 16px;
+}
+.controls label { font-size: 0.85rem; color: var(--muted); }
+
+select, button {
+  background: var(--panel);
+  color: var(--ink);
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+button:hover:not(:disabled) { border-color: #64748b; }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.status {
+  min-height: 1.4em;
+  margin: 0 0 12px;
+  font-weight: 600;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  background: var(--board);
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.cell {
+  aspect-ratio: 1 / 1;
+  background: var(--hole);
+  border: none;
+  border-radius: 50%;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.08s ease, box-shadow 0.15s ease;
+}
+.cell:disabled { cursor: default; }
+.cell.human { background: var(--human); }
+.cell.ai { background: var(--ai); }
+.cell.playable:hover { transform: scale(1.06); }
+.cell.win { box-shadow: 0 0 0 3px #fff inset; }
+
+.analysis {
+  margin-top: 20px;
+  padding: 16px;
+  background: var(--panel);
+  border-radius: 12px;
+}
+.analysis h2 { margin: 0 0 8px; font-size: 0.95rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.analysis p { margin: 0 0 12px; line-height: 1.5; font-size: 0.95rem; }
+
+.metrics {
+  list-style: none; display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px; padding: 0; margin: 0 0 12px;
+  text-align: center;
+}
+.metrics span { display: block; font-size: 1.1rem; font-weight: 700; }
+.metrics small { color: var(--muted); font-size: 0.68rem; }
+
+.commentary {
+  border-left: 3px solid #38bdf8;
+  padding-left: 12px;
+  color: #cbd5e1;
+  font-style: italic;
+}

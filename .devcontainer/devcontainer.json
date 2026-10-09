@@ -1,0 +1,14 @@
+{
+    "name": "Connect Four AI",
+    "image": "mcr.microsoft.com/devcontainers/python:3.12",
+    "postCreateCommand": "pip install -r requirements.txt",
+    "forwardPorts": [5000],
+    "portsAttributes": {
+        "5000": {"label": "Connect Four", "onAutoForward": "openPreview" }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": ["ms-python.python", "ms-python.vscode-pylance"]
+        }
+    }
+}

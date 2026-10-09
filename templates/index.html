@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connect Four vs. AI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="app">
+    <header>
+      <h1>Connect Four</h1>
+      <p class="subtitle">You are <span class="chip human"></span> red. The AI is <span class="chip ai"></span> yellow.</p>
+    </header>
+
+    <section class="controls">
+      <label for="difficulty">Difficulty</label>
+      <select id="difficulty">
+        <option value="easy">Easy &mdash; looks 1 move ahead</option>
+        <option value="medium" selected>Medium &mdash; looks 4 moves ahead</option>
+        <option value="hard">Hard &mdash; looks 6 moves ahead</option>
+      </select>
+      <button id="new-game" type="button">New game</button>
+    </section>
+
+    <p id="status" class="status">Loading&hellip;</p>
+
+    <div id="board" class="board" role="grid" aria-label="Connect Four board"></div>
+
+    <section id="analysis" class="analysis" hidden>
+      <h2>Why the AI played that</h2>
+      <p id="explanation"></p>
+      <ul class="metrics">
+        <li><span id="m-column">&mdash;</span><small>column</small></li>
+        <li><span id="m-depth">&mdash;</span><small>plies deep</small></li>
+        <li><span id="m-nodes">&mdash;</span><small>positions searched</small></li>
+        <li><span id="m-time">&mdash;</span><small>think time</small></li>
+      </ul>
+      <button id="ask-coach" type="button">Ask the AI coach</button>
+      <p id="commentary" class="commentary" hidden></p>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='game.js') }}"></script>
+</body>
+</html>
